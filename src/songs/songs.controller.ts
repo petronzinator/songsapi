@@ -17,6 +17,10 @@ export class SongsController {
     @Post()
     async addSong(@Body() song: CreateSongRequest) {
         const addedSong = await this.service.addOne(song);
-        return addedSong;
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(addedSong)
+            }, 3000)
+        })
     }
 }
